@@ -11,4 +11,5 @@ define users::ssh_authorized_keys($user, $hash) {
       user     => $user,
     }
   }
+
 }
