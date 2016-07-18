@@ -1,3 +1,4 @@
+# define: users::ssh_authorized_keys
 define users::ssh_authorized_keys($user, $hash) {
 
   if(!defined(Ssh_authorized_key["${user}-${name}"])) {
