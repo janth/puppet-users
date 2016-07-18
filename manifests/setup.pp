@@ -1,5 +1,6 @@
 define users::setup($hash) {
 
+  /*
   if($hash[$name]['gid']) {
     $_group = $hash[$name]['gid']
     if(!defined(Group[$name])) {
@@ -9,6 +10,7 @@ define users::setup($hash) {
       }
     }
   }
+  */
 
   if(!defined(User[$name])) {
     user { $name :
