@@ -13,7 +13,8 @@ define users::setup($hash) {
   */
 
   $purge_ssh_keys = false
-  if( has_key($hash[$name], 'purge_ssh_keys') and has_key($hash[$name], 'home') ) {
+  #if( has_key($hash[$name], 'purge_ssh_keys') and has_key($hash[$name], 'home') ) {
+  if( has_key($hash[$name], 'purge_ssh_keys')  ) {
     $purge_ssh_keys = $hash[$name]['purge_ssh_keys']
     notify { "purge_ssh_keys true": withpath => true, }
   }
