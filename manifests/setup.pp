@@ -12,11 +12,16 @@ define users::setup($hash) {
   }
   */
 
-  if( has_key($hash[$name], 'purge_ssh_keys') and has_key($hash[$name], 'home') ) {
-  #if( has_key($hash[$name], 'purge_ssh_keys')  ) {
-    $purge_keys = $hash[$name]['purge_ssh_keys']
-    #notify { "purge_ssh_keys true": withpath => true, }
-    notice ("JTM::purge_ssh_keys true")
+  #if( has_key($hash[$name], 'purge_ssh_keys') and has_key($hash[$name], 'home') ) {
+  if( has_key($hash[$name], 'purge_ssh_keys')  ) {
+    if( has_key($hash[$name], 'home') ) {
+      notice ("JTM::purge_ssh_keys and home true")
+      $purge_keys = $hash[$name]['purge_ssh_keys']
+      #notify { "purge_ssh_keys true": withpath => true, }
+      notice ("JTM::purge_ssh_keys true")
+    } else {
+      notice ("JTM::purge_ssh_keys true and home false/not set")
+    }
   } else {
     $purge_keys = false
     notice ("JTM::purge_ssh_keys false")
