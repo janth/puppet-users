@@ -42,6 +42,7 @@ define users::setup($hash) {
       shell                => $hash[$name]['shell'],
       system               => $hash[$name]['system'],
       uid                  => $hash[$name]['uid'],
+      purge_ssh_keys       => $hash[$name]['purge_ssh_keys'],
     }
   
     if($hash[$name]['ssh_authorized_keys']) {
