@@ -16,8 +16,10 @@ define users::setup($hash) {
   if( has_key($hash[$name], 'purge_ssh_keys')  ) {
     $purge_keys = $hash[$name]['purge_ssh_keys']
     #notify { "purge_ssh_keys true": withpath => true, }
+    notice ("JTM::purge_ssh_keys true")
   } else {
     $purge_keys = false
+    notice ("JTM::purge_ssh_keys false")
     #notify { "purge_ssh_keys false": withpath => true, }
   }
   #else { notify { "the purge_ssh_keys is false": withpath => true, } }
