@@ -12,10 +12,10 @@ define users::setup($hash) {
   }
   */
 
-  $purge_ssh_keys = false
+  $purge_keys = false
   #if( has_key($hash[$name], 'purge_ssh_keys') and has_key($hash[$name], 'home') ) {
   if( has_key($hash[$name], 'purge_ssh_keys')  ) {
-    $purge_ssh_keys = $hash[$name]['purge_ssh_keys']
+    $purge_keys = $hash[$name]['purge_ssh_keys']
     notify { "purge_ssh_keys true": withpath => true, }
   }
   #else { notify { "the purge_ssh_keys is false": withpath => true, } }
@@ -51,7 +51,7 @@ define users::setup($hash) {
       shell                => $hash[$name]['shell'],
       system               => $hash[$name]['system'],
       uid                  => $hash[$name]['uid'],
-      purge_ssh_keys       => $purge_ssh_keys, # Only also when home is set...
+      purge_ssh_keys       => $purge_keys, # Only also when home is set...
     }
   
     if($hash[$name]['ssh_authorized_keys']) {
