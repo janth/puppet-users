@@ -18,7 +18,7 @@ define users::setup($hash) {
     notify { "purge_ssh_keys true": withpath => true, }
   } else {
     $purge_keys = false
-    notify { "purge_ssh_keys false": withpath => true, }
+    #notify { "purge_ssh_keys false": withpath => true, }
   }
   #else { notify { "the purge_ssh_keys is false": withpath => true, } }
 
