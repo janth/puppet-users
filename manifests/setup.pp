@@ -12,6 +12,12 @@ define users::setup($hash) {
   }
   */
 
+  $purge_ssh_keys = false
+  if( defined($hash[$name]['purge_ssh_keys']) and defined($hash[$name]['home']) ) {
+    $purge_ssh_keys = $hash[$name]['purge_ssh_keys']
+  }
+
+
   if(!defined(User[$name])) {
     user { $name :
       ensure               => $hash[$name]['ensure'],
@@ -42,7 +48,7 @@ define users::setup($hash) {
       shell                => $hash[$name]['shell'],
       system               => $hash[$name]['system'],
       uid                  => $hash[$name]['uid'],
-      purge_ssh_keys       => $hash[$name]['purge_ssh_keys'],
+      purge_ssh_keys       => $purge_ssh_keys, # Only also when home is set...
     }
   
     if($hash[$name]['ssh_authorized_keys']) {
